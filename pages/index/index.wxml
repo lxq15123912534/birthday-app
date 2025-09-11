@@ -131,6 +131,9 @@
             生日列表
             <text class="count-badge">{{filteredBirthdays.length}}</text>
           </view>
+          <view class="add-btn" bindtap="addBirthday">
+            <text class="add-btn-icon">🎂</text>
+          </view>
         </view>
 
         <!-- 生日条目 -->
@@ -167,33 +170,10 @@
                 </view>
               </view>
             </view>
-            
-            <!-- 快捷操作 -->
-            <view class="item-actions">
-              <view class="action-btn" catchtap="viewDetail" data-index="{{index}}">
-                <text class="icon">👁️</text>
-                详细
-              </view>
-              <view class="action-btn delete" catchtap="deleteBirthday" data-id="{{item.id}}" data-name="{{item.name}}" data-index="{{index}}">
-                <text class="icon">🗑️</text>
-                删除
-              </view>
-            </view>
           </view>
         </view>
       </view>
     </view>
   </view>
 
-  <!-- 悬浮添加按钮 -->
-  <view wx:if="{{!isEmpty}}" class="fab" bindtap="addBirthday">
-    <view class="fab-content">
-      <text class="fab-icon">🎂</text>
-      <view class="fab-sparkles">
-        <text class="sparkle sparkle-1">✨</text>
-        <text class="sparkle sparkle-2">🎈</text>
-        <text class="sparkle sparkle-3">⭐</text>
-      </view>
-    </view>
-  </view>
 </view>

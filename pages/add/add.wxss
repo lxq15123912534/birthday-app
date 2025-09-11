@@ -65,7 +65,7 @@
 
 /* 表单容器 */
 .form-container {
-  padding: 0 30rpx 180rpx;
+  padding: 0 30rpx 120rpx;
 }
 
 .form-card {

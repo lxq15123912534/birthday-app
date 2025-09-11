@@ -2,13 +2,30 @@
   "pages": [
     "pages/index/index",
     "pages/add/add",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/profile/profile"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "生日守护星",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7f8c8d",
+    "selectedColor": "#ff6b9d",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "清单"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
