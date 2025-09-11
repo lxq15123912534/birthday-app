@@ -27,6 +27,25 @@ function getZodiac(year) {
   return zodiacs[year % 12]
 }
 
+// 生肖emoji映射
+function getZodiacEmoji(zodiacText) {
+  var zodiacEmojis = {
+    "鼠": "🐭",
+    "牛": "🐮", 
+    "虎": "🐯",
+    "兔": "🐰",
+    "龙": "🐲",
+    "蛇": "🐍",
+    "马": "🐎",
+    "羊": "🐑",
+    "猴": "🐵",
+    "鸡": "🐔",
+    "狗": "🐶",
+    "猪": "🐷"
+  }
+  return zodiacEmojis[zodiacText] || "🐾"
+}
+
 // 计算距离下次生日的天数
 function calculateDaysLeft(birthday) {
   var today = new Date()
@@ -114,12 +133,14 @@ function calculateBirthdayInfo(birthday) {
       info.lunarInfo = '农历' + lunarToSolar.lYear + '年' + lunarToSolar.IMonthCn + lunarToSolar.IDayCn
       info.gzYear = lunarToSolar.gzYear
       info.zodiac = lunarToSolar.Animal
+      info.zodiacEmoji = getZodiacEmoji(lunarToSolar.Animal)
     } else {
       // 转换失败时的备选方案
       info.constellation = getConstellation(birthday.month, birthday.day)
       info.solarDate = '转换失败'
       info.lunarInfo = '农历' + birthday.year + '年' + birthday.month + '月' + birthday.day + '日'
       info.zodiac = getZodiac(birthday.year)
+      info.zodiacEmoji = getZodiacEmoji(getZodiac(birthday.year))
     }
   } else {
     // 公历生日，可以转换为农历显示更多信息
@@ -130,11 +151,13 @@ function calculateBirthdayInfo(birthday) {
       info.lunarInfo = '农历' + solarToLunar.lYear + '年' + solarToLunar.IMonthCn + solarToLunar.IDayCn
       info.gzYear = solarToLunar.gzYear
       info.zodiac = solarToLunar.Animal
+      info.zodiacEmoji = getZodiacEmoji(solarToLunar.Animal)
     } else {
       info.constellation = getConstellation(birthday.month, birthday.day)
       info.solarDate = birthday.year + '年' + birthday.month + '月' + birthday.day + '日'
       info.lunarInfo = '转换失败'
       info.zodiac = getZodiac(birthday.year)
+      info.zodiacEmoji = getZodiacEmoji(getZodiac(birthday.year))
     }
   }
   
@@ -205,6 +228,7 @@ function getAllTags(birthdays) {
 module.exports = {
   getConstellation: getConstellation,
   getZodiac: getZodiac,
+  getZodiacEmoji: getZodiacEmoji,
   calculateDaysLeft: calculateDaysLeft,
   calculateAge: calculateAge,
   getBirthdayBlessing: getBirthdayBlessing,

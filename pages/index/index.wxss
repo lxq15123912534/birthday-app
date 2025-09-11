@@ -228,16 +228,17 @@
 .name-section .avatar {
   width: 56rpx;
   height: 56rpx;
-  font-size: 22rpx;
+  font-size: 32rpx;
   margin-right: 16rpx;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border: 1rpx solid rgba(255, 255, 255, 0.5);
-  color: white;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10rpx);
+  -webkit-backdrop-filter: blur(10rpx);
+  border: 1rpx solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
+  line-height: 1;
 }
 
 .name-details .name {
@@ -458,16 +459,17 @@
 .item-left .avatar {
   width: 52rpx;
   height: 52rpx;
-  font-size: 22rpx;
+  font-size: 28rpx;
   margin-right: 16rpx;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  border: 1rpx solid rgba(255, 255, 255, 0.5);
-  color: white;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10rpx);
+  -webkit-backdrop-filter: blur(10rpx);
+  border: 1rpx solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
+  line-height: 1;
 }
 
 .basic-info {
@@ -528,7 +530,7 @@
   margin-top: 2rpx;
 }
 
-.zodiac-info {
+.constellation-info {
   font-size: 18rpx;
   color: #9ca3af;
 }

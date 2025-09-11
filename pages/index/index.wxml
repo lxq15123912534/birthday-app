@@ -58,7 +58,7 @@
             
             <view class="birthday-info">
               <view class="name-section">
-                <view class="avatar">{{upcomingBirthday.name.substring(0,1)}}</view>
+                <view class="avatar">{{upcomingBirthday.zodiacEmoji}}</view>
                 <view class="name-details">
                   <view class="name">{{upcomingBirthday.name}}</view>
                   <view class="tags">
@@ -78,10 +78,6 @@
                   <view class="meta-item">
                     <text class="icon">🎭</text>
                     {{upcomingBirthday.constellation}}
-                  </view>
-                  <view class="meta-item">
-                    <text class="icon">🐲</text>
-                    {{upcomingBirthday.zodiac}}
                   </view>
                   <view class="meta-item">
                     <text class="icon">🎈</text>
@@ -147,7 +143,7 @@
           >
             <view class="item-content">
               <view class="item-left">
-                <view class="avatar">{{item.name.substring(0,1)}}</view>
+                <view class="avatar">{{item.zodiacEmoji}}</view>
                 <view class="basic-info">
                   <view class="name">{{item.name}}</view>
                   <view class="birthday-date">
@@ -165,7 +161,7 @@
                   <view class="days-number">{{item.daysLeft}}</view>
                   <view class="days-text">天后</view>
                 </view>
-                <view class="zodiac-info">
+                <view class="constellation-info">
                   <text>{{item.constellation}}</text>
                 </view>
               </view>
