@@ -4,19 +4,20 @@
 page {
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  background: linear-gradient(135deg, #ffeef8 0%, #fff5f1 50%, #f8f0ff 100%);
-  color: #2c3e50;
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+  color: #374151;
   line-height: 1.6;
+  font-weight: 400;
 }
 
-/* 设计系统 - 生日主题配色 */
-.primary-color { color: #ff6b9d; }
-.secondary-color { color: #ffa726; }
-.accent-color { color: #ff8a95; }
-.success-color { color: #26d0ce; }
-.warning-color { color: #ffc947; }
-.danger-color { color: #ff6b6b; }
-.text-primary { color: #2c3e50; }
+/* 设计系统 - 现代配色方案 */
+.primary-color { color: #667eea; }
+.secondary-color { color: #764ba2; }
+.accent-color { color: #f093fb; }
+.success-color { color: #4ade80; }
+.warning-color { color: #fbbf24; }
+.danger-color { color: #f87171; }
+.text-primary { color: #1f2937; }
 .text-secondary { color: #6b7280; }
 .text-muted { color: #9ca3af; }
 
@@ -36,53 +37,59 @@ page {
 /* 容器 */
 .container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #ffeef8 0%, #fff5f1 50%, #f8f0ff 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
   padding: 0;
 }
 
 .content-wrapper {
   min-height: 100vh;
-  background: linear-gradient(135deg, #ffeef8 0%, #fff5f1 50%, #f8f0ff 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
   position: relative;
 }
 
-/* 卡片系统 */
+/* 卡片系统 - 玻璃拟态设计 */
 .card {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(20rpx);
+  -webkit-backdrop-filter: blur(20rpx);
   border-radius: 20rpx;
-  box-shadow: 0 8rpx 32rpx rgba(255, 107, 157, 0.15);
+  box-shadow: 
+    0 4rpx 20rpx rgba(0, 0, 0, 0.06),
+    0 1rpx 0 rgba(255, 255, 255, 0.5) inset;
   border: 1rpx solid rgba(255, 255, 255, 0.3);
-  margin-bottom: 20rpx;
+  margin-bottom: 16rpx;
   overflow: hidden;
   transition: all 0.3s ease;
 }
 
 .card:active {
-  transform: translateY(2rpx);
-  box-shadow: 0 12rpx 40rpx rgba(255, 107, 157, 0.2);
+  transform: translateY(1rpx);
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 2rpx 12rpx rgba(0, 0, 0, 0.08),
+    0 1rpx 0 rgba(255, 255, 255, 0.5) inset;
 }
 
 .card-header {
-  padding: 32rpx;
-  border-bottom: 2rpx solid #f8f9fa;
+  padding: 24rpx;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
 }
 
 .card-body {
-  padding: 32rpx;
+  padding: 24rpx;
 }
 
 .card-title {
-  font-size: 32rpx;
+  font-size: 28rpx;
   font-weight: 600;
-  color: #2c3e50;
-  margin-bottom: 16rpx;
+  color: #1f2937;
+  margin-bottom: 12rpx;
 }
 
 .card-subtitle {
-  font-size: 26rpx;
-  color: #7f8c8d;
-  margin-bottom: 24rpx;
+  font-size: 22rpx;
+  color: #6b7280;
+  margin-bottom: 20rpx;
 }
 
 /* 按钮系统 */
@@ -117,7 +124,7 @@ page {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #ff6b9d 0%, #ffa726 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   position: relative;
   overflow: hidden;
@@ -153,8 +160,8 @@ page {
 
 .btn-outline {
   background: transparent;
-  border: 2rpx solid #ff6b9d;
-  color: #ff6b9d;
+  border: 2rpx solid #667eea;
+  color: #667eea;
 }
 
 .btn-small {
@@ -196,8 +203,8 @@ page {
 
 .form-input:focus {
   background: white;
-  border-color: #ff6b9d;
-  box-shadow: 0 0 0 6rpx rgba(255, 107, 157, 0.1);
+  border-color: #667eea;
+  box-shadow: 0 0 0 6rpx rgba(102, 126, 234, 0.1);
   outline: none;
 }
 
@@ -210,22 +217,23 @@ page {
 /* 标签系统 */
 .tag {
   display: inline-block;
-  background: rgba(255, 107, 157, 0.1);
-  color: #ff6b9d;
-  padding: 12rpx 24rpx;
-  margin: 8rpx 8rpx 8rpx 0;
-  border-radius: 24rpx;
-  font-size: 24rpx;
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  padding: 10rpx 20rpx;
+  margin: 6rpx 6rpx 6rpx 0;
+  border-radius: 20rpx;
+  font-size: 22rpx;
   font-weight: 500;
   transition: all 0.3s ease;
-  border: 2rpx solid rgba(255, 107, 157, 0.2);
+  border: 1rpx solid rgba(102, 126, 234, 0.2);
 }
 
 .tag.active {
-  background: linear-gradient(135deg, #ff6b9d 0%, #ffa726 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  transform: scale(1.05);
+  transform: scale(1.02);
   border-color: transparent;
+  box-shadow: 0 2rpx 8rpx rgba(102, 126, 234, 0.3);
 }
 
 .tag:active {
@@ -234,16 +242,17 @@ page {
 
 /* 头像/图标系统 */
 .avatar {
-  width: 80rpx;
-  height: 80rpx;
+  width: 72rpx;
+  height: 72rpx;
   border-radius: 50%;
-  background: linear-gradient(135deg, #ff6b9d 0%, #ffa726 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-weight: 600;
-  font-size: 28rpx;
+  font-weight: 500;
+  font-size: 26rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.5);
 }
 
 .icon {
@@ -312,20 +321,21 @@ page {
 }
 
 .empty-icon {
-  width: 180rpx;
-  height: 180rpx;
-  margin: 0 auto 40rpx;
-  background: linear-gradient(135deg, #ff6b9d 0%, #ffa726 100%);
+  width: 160rpx;
+  height: 160rpx;
+  margin: 0 auto 32rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 80rpx;
+  font-size: 72rpx;
   color: white;
-  box-shadow: 0 16rpx 48rpx rgba(255, 107, 157, 0.25);
+  box-shadow: 0 12rpx 40rpx rgba(102, 126, 234, 0.25);
   animation: float 3s ease-in-out infinite;
   position: relative;
   overflow: hidden;
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
 }
 
 .empty-icon::before {
@@ -369,20 +379,20 @@ page {
 .empty-state .btn {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(135deg, #ff6b9d 0%, #ffa726 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border: none;
-  border-radius: 60rpx;
-  padding: 28rpx 40rpx;
-  font-size: 32rpx;
-  font-weight: 600;
+  border-radius: 50rpx;
+  padding: 24rpx 36rpx;
+  font-size: 28rpx;
+  font-weight: 500;
   color: white;
-  box-shadow: 0 8rpx 32rpx rgba(255, 107, 157, 0.4),
-              0 0 0 0 rgba(255, 107, 157, 0.2);
+  box-shadow: 0 6rpx 28rpx rgba(102, 126, 234, 0.4),
+              0 0 0 0 rgba(102, 126, 234, 0.2);
   transform: translateY(0) scale(1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(20rpx);
-  min-width: 200rpx;
-  max-width: 240rpx;
+  min-width: 180rpx;
+  max-width: 220rpx;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -425,8 +435,8 @@ page {
 
 .empty-state .btn:active {
   transform: translateY(2rpx) scale(0.98);
-  box-shadow: 0 4rpx 16rpx rgba(255, 107, 157, 0.3),
-              0 0 0 8rpx rgba(255, 107, 157, 0.1);
+  box-shadow: 0 3rpx 14rpx rgba(102, 126, 234, 0.3),
+              0 0 0 6rpx rgba(102, 126, 234, 0.1);
 }
 
 .empty-state .btn:active::after {
@@ -448,12 +458,12 @@ page {
 
 @keyframes buttonPulse {
   0%, 100% {
-    box-shadow: 0 8rpx 32rpx rgba(255, 107, 157, 0.4),
-                0 0 0 0 rgba(255, 107, 157, 0.2);
+    box-shadow: 0 6rpx 28rpx rgba(102, 126, 234, 0.4),
+                0 0 0 0 rgba(102, 126, 234, 0.2);
   }
   50% {
-    box-shadow: 0 8rpx 32rpx rgba(255, 107, 157, 0.4),
-                0 0 0 12rpx rgba(255, 107, 157, 0.1);
+    box-shadow: 0 6rpx 28rpx rgba(102, 126, 234, 0.4),
+                0 0 0 10rpx rgba(102, 126, 234, 0.1);
   }
 }
 
@@ -475,14 +485,14 @@ page {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(135deg, #ff6b9d 0%, #ffa726 100%);
-  border-radius: 50rpx;
-  padding: 32rpx 48rpx;
-  box-shadow: 0 12rpx 48rpx rgba(255, 107, 157, 0.3);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 40rpx;
+  padding: 28rpx 44rpx;
+  box-shadow: 0 10rpx 40rpx rgba(102, 126, 234, 0.3);
   transform: translateY(0);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(20rpx);
-  border: 3rpx solid rgba(255, 255, 255, 0.2);
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
 }
 
 .hand-emoji {
@@ -566,7 +576,7 @@ page {
 
 .gesture-button:active .gesture-hand {
   transform: translateY(-2rpx);
-  box-shadow: 0 6rpx 24rpx rgba(255, 107, 157, 0.4);
+  box-shadow: 0 5rpx 20rpx rgba(102, 126, 234, 0.4);
 }
 
 .gesture-button:active .hand-emoji {
@@ -577,7 +587,7 @@ page {
 /* 悬停效果 */
 .gesture-button:hover .gesture-hand {
   transform: translateY(-4rpx);
-  box-shadow: 0 16rpx 56rpx rgba(255, 107, 157, 0.4);
+  box-shadow: 0 14rpx 48rpx rgba(102, 126, 234, 0.4);
 }
 
 .gesture-button:hover .sparkle {
@@ -593,11 +603,11 @@ page {
   right: -2rpx;
   bottom: -2rpx;
   background: linear-gradient(45deg, 
-    rgba(255, 107, 157, 0.6) 0%, 
-    rgba(255, 167, 38, 0.6) 25%, 
-    rgba(255, 107, 157, 0.6) 50%, 
-    rgba(255, 167, 38, 0.6) 75%, 
-    rgba(255, 107, 157, 0.6) 100%);
+    rgba(102, 126, 234, 0.6) 0%, 
+    rgba(118, 75, 162, 0.6) 25%, 
+    rgba(102, 126, 234, 0.6) 50%, 
+    rgba(118, 75, 162, 0.6) 75%, 
+    rgba(102, 126, 234, 0.6) 100%);
   border-radius: 52rpx;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -627,10 +637,10 @@ page {
 }
 
 .loading-spinner {
-  width: 64rpx;
-  height: 64rpx;
-  border: 6rpx solid #ecf0f1;
-  border-top: 6rpx solid #ff6b9d;
+  width: 56rpx;
+  height: 56rpx;
+  border: 4rpx solid #e5e7eb;
+  border-top: 4rpx solid #667eea;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
