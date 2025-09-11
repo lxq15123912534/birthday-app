@@ -1,0 +1,236 @@
+<!--pages/add/add.wxml-->
+<view class="container">
+  <!-- 顶部标题区域 -->
+  <view class="header-section">
+    <view class="header-content">
+      <view class="page-title">
+        <text class="icon">{{isEdit ? '✏️' : '➕'}}</text>
+        {{isEdit ? '编辑生日信息' : '添加生日信息'}}
+      </view>
+      <view class="page-subtitle">记录重要的日子，永不遗忘</view>
+    </view>
+  </view>
+
+  <!-- 表单内容区域 -->
+  <view class="content-wrapper slide-up">
+    <view class="form-container">
+      
+      <!-- 基本信息卡片 -->
+      <view class="form-card card">
+        <view class="card-header">
+          <view class="card-title">
+            <text class="icon">👤</text>
+            基本信息
+          </view>
+        </view>
+        
+        <view class="card-body">
+          <!-- 姓名输入 -->
+          <view class="form-group">
+            <view class="form-label">姓名 *</view>
+            <input
+              class="form-input"
+              placeholder="请输入姓名"
+              value="{{name}}"
+              bindinput="onNameInput"
+              maxlength="20"
+              focus="{{!isEdit}}"
+            />
+          </view>
+        </view>
+      </view>
+
+      <!-- 日期信息卡片 -->
+      <view class="form-card card">
+        <view class="card-header">
+          <view class="card-title">
+            <text class="icon">📅</text>
+            生日日期
+          </view>
+        </view>
+        
+        <view class="card-body">
+          <!-- 日期类型选择 -->
+          <view class="form-group">
+            <view class="form-label">日期类型</view>
+            <view class="date-type-selector">
+              <view 
+                class="type-option {{dateType === 'solar' ? 'active' : ''}}"
+                data-type="solar"
+                bindtap="onDateTypeChange"
+              >
+                <view class="type-icon">☀️</view>
+                <view class="type-text">
+                  <view class="type-name">公历</view>
+                  <view class="type-desc">阳历生日</view>
+                </view>
+              </view>
+              
+              <view 
+                class="type-option {{dateType === 'lunar' ? 'active' : ''}}"
+                data-type="lunar"
+                bindtap="onDateTypeChange"
+              >
+                <view class="type-icon">🌙</view>
+                <view class="type-text">
+                  <view class="type-name">农历</view>
+                  <view class="type-desc">阴历生日</view>
+                </view>
+              </view>
+            </view>
+          </view>
+
+          <!-- 日期选择器 -->
+          <view class="form-group">
+            <view class="form-label">出生日期</view>
+            <view class="date-picker-group">
+              
+              <view class="picker-item">
+                <view class="picker-label">年份</view>
+                <picker 
+                  mode="selector" 
+                  range="{{years}}" 
+                  value="{{yearIndex}}"
+                  bindchange="onYearChange"
+                  class="picker-wrapper"
+                >
+                  <view class="picker-display">
+                    <text class="picker-value">{{year}}</text>
+                    <text class="picker-unit">年</text>
+                    <text class="picker-arrow">▼</text>
+                  </view>
+                </picker>
+              </view>
+
+              <view class="picker-item">
+                <view class="picker-label">月份</view>
+                <picker 
+                  mode="selector" 
+                  range="{{months}}" 
+                  value="{{monthIndex}}"
+                  bindchange="onMonthChange"
+                  class="picker-wrapper"
+                >
+                  <view class="picker-display">
+                    <text class="picker-value">{{month}}</text>
+                    <text class="picker-unit">月</text>
+                    <text class="picker-arrow">▼</text>
+                  </view>
+                </picker>
+              </view>
+
+              <view class="picker-item">
+                <view class="picker-label">日期</view>
+                <picker 
+                  mode="selector" 
+                  range="{{days}}" 
+                  value="{{dayIndex}}"
+                  bindchange="onDayChange"
+                  class="picker-wrapper"
+                >
+                  <view class="picker-display">
+                    <text class="picker-value">{{day}}</text>
+                    <text class="picker-unit">日</text>
+                    <text class="picker-arrow">▼</text>
+                  </view>
+                </picker>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 标签信息卡片 -->
+      <view class="form-card card">
+        <view class="card-header">
+          <view class="card-title">
+            <text class="icon">🏷️</text>
+            标签分类
+          </view>
+          <view class="card-subtitle">选择或添加标签来分类管理</view>
+        </view>
+        
+        <view class="card-body">
+          <!-- 自定义标签输入 -->
+          <view wx:if="{{showCustomTag}}" class="custom-tag-section">
+            <view class="custom-tag-input">
+              <input
+                class="custom-input"
+                placeholder="输入自定义标签"
+                value="{{customTag}}"
+                bindinput="onCustomTagInput"
+                maxlength="10"
+                focus="{{showCustomTag}}"
+              />
+              <view class="custom-actions">
+                <view class="action-btn confirm" bindtap="addCustomTag">
+                  <text class="icon">✅</text>
+                </view>
+                <view class="action-btn cancel" bindtap="cancelCustomTag">
+                  <text class="icon">❌</text>
+                </view>
+              </view>
+            </view>
+          </view>
+
+          <!-- 标签选择区域 -->
+          <view class="tags-section">
+            <!-- 已选标签 -->
+            <view wx:if="{{selectedTags.length > 0}}" class="selected-tags">
+              <view class="section-label">已选择：</view>
+              <view class="tags-container">
+                <view 
+                  class="tag active selected-tag"
+                  wx:for="{{selectedTags}}"
+                  wx:key="index"
+                  data-tag="{{item}}"
+                  bindtap="onTagTap"
+                >
+                  {{item}}
+                  <text class="remove-icon">✕</text>
+                </view>
+              </view>
+            </view>
+
+            <!-- 推荐标签 -->
+            <view class="recommend-tags">
+              <view class="section-label">
+                推荐标签：
+                <view class="add-custom-btn" bindtap="showCustomTagInput" wx:if="{{!showCustomTag}}">
+                  <text class="icon">➕</text>
+                  自定义
+                </view>
+              </view>
+              
+              <view class="tags-container">
+                <view 
+                  class="tag {{selectedTags.includes(item) ? 'active' : ''}}"
+                  wx:for="{{recommendTags}}"
+                  wx:key="index"
+                  data-tag="{{item}}"
+                  bindtap="onTagTap"
+                >
+                  {{item}}
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+    <!-- 底部操作按钮 -->
+    <view class="bottom-actions">
+      <view class="action-buttons">
+        <button class="btn btn-outline btn-large cancel-btn" bindtap="onCancel">
+          取消
+        </button>
+        <button class="btn btn-primary btn-large save-btn" bindtap="saveBirthday">
+          <text class="icon">💾</text>
+          {{isEdit ? '保存修改' : '保存'}}
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

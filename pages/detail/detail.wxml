@@ -1,0 +1,118 @@
+<!--pages/detail/detail.wxml-->
+<view class="container" wx:if="{{birthday}}">
+  <!-- 顶部区域 -->
+  <view class="header-section">
+    <view class="header-card">
+    <view class="countdown-section">
+      <view class="countdown-circle">
+        <view class="countdown-number">{{birthday.daysLeft}}</view>
+        <view class="countdown-text">天</view>
+      </view>
+      <view class="countdown-info">
+        <view class="name">{{birthday.name}}</view>
+        <view class="date">{{birthday.year}}年{{birthday.month}}月{{birthday.day}}日</view>
+        <view class="lunar-info">{{birthday.type === 'lunar' ? '农历' : '公历'}}</view>
+        <view class="distance">距离生日还有{{birthday.daysLeft}}天</view>
+        <view class="blessing">{{birthday.blessing || '愿你岁岁平安，年年有今日'}}</view>
+      </view>
+    </view>
+    </view>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="content-wrapper">
+    <!-- 基本信息 -->
+  <view class="info-card">
+    <view class="card-title">📋 基本信息</view>
+    
+    <view class="info-row">
+      <view class="info-label">姓名</view>
+      <view class="info-value">{{birthday.name}}</view>
+    </view>
+    
+    <view class="info-row">
+      <view class="info-label">标签</view>
+      <view class="info-value">
+        <view class="tag" wx:for="{{birthday.tags}}" wx:key="index">{{item}}</view>
+        <view class="tag" wx:if="{{!birthday.tags || birthday.tags.length === 0}}">朋友</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 出生日期信息 -->
+  <view class="info-card">
+    <view class="card-title">🎂 出生日期</view>
+    
+    <view class="date-grid">
+      <view class="date-item">
+        <view class="date-type">{{birthday.type === 'lunar' ? '农历' : '公历'}}</view>
+        <view class="date-value">{{birthday.year}}年{{birthday.month}}月{{birthday.day}}日</view>
+      </view>
+      
+      <view class="date-item" wx:if="{{birthday.type === 'lunar'}}">
+        <view class="date-type">对应公历</view>
+        <view class="date-value">{{birthday.solarDate}}</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 星座生肖信息 -->
+  <view class="info-card">
+    <view class="card-title">🌟 星座生肖</view>
+    
+    <view class="zodiac-grid">
+      <view class="zodiac-item">
+        <view class="zodiac-icon">♒</view>
+        <view class="zodiac-info">
+          <view class="zodiac-label">星座</view>
+          <view class="zodiac-value">{{birthday.constellation}}</view>
+        </view>
+      </view>
+      
+      <view class="zodiac-item">
+        <view class="zodiac-icon">🐷</view>
+        <view class="zodiac-info">
+          <view class="zodiac-label">生肖</view>
+          <view class="zodiac-value">{{birthday.zodiac}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 年龄信息 -->
+  <view class="info-card">
+    <view class="card-title">📅 年龄信息</view>
+    
+    <view class="age-info">
+      <view class="age-row">
+        <view class="age-label">当前年龄</view>
+        <view class="age-value">{{birthday.currentAge}}岁</view>
+      </view>
+      
+      <view class="age-row">
+        <view class="age-label">下次生日</view>
+        <view class="age-value">{{birthday.nextBirthdayAge}}岁</view>
+      </view>
+    </view>
+  </view>
+
+
+  <!-- 操作按钮 -->
+  <view class="action-buttons">
+    <button class="action-btn edit-btn" bindtap="editBirthday">
+      <view class="btn-icon">✏️</view>
+      <view class="btn-text">编辑</view>
+    </button>
+    
+    <button class="action-btn delete-btn" bindtap="deleteBirthday">
+      <view class="btn-icon">🗑️</view>
+      <view class="btn-text">删除</view>
+    </button>
+  </view>
+  </view>
+</view>
+
+<view class="empty-state" wx:else>
+  <view class="empty-text">生日信息不存在</view>
+  <button class="btn-primary" bindtap="navigateBack">返回</button>
+</view>

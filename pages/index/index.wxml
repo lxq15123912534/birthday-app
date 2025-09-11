@@ -1,0 +1,199 @@
+<!--index.wxml-->
+<view class="container">
+  <!-- 顶部标题区域 -->
+  <view class="header-section">
+    <view class="header-decorations">
+      <text class="decoration decoration-1">🎂</text>
+      <text class="decoration decoration-2">🎈</text>
+      <text class="decoration decoration-3">🎉</text>
+      <text class="decoration decoration-4">✨</text>
+      <text class="decoration decoration-5">🎁</text>
+    </view>
+    <view class="app-title">🌟 生日守护星</view>
+    <view class="app-subtitle">记录重要的日子，永不遗忘</view>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="content-wrapper slide-up">
+    
+    <!-- 空状态 -->
+    <view wx:if="{{isEmpty}}" class="empty-state fade-in">
+      <view class="empty-content">
+        <view class="empty-icon">🎂</view>
+        <view class="empty-title">开始记录生日</view>
+        <view class="empty-subtitle">
+          添加亲友的生日信息<br/>
+          让每个重要时刻都不错过
+        </view>
+        <view class="gesture-button" bindtap="addBirthday">
+          <view class="gesture-hand">
+            <view class="hand-emoji">👆</view>
+            <view class="gesture-text">点击添加</view>
+          </view>
+          <view class="gesture-sparkles">
+            <view class="sparkle sparkle-1">✨</view>
+            <view class="sparkle sparkle-2">✨</view>
+            <view class="sparkle sparkle-3">✨</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 有数据状态 -->
+    <view wx:else class="main-content">
+      
+      <!-- 即将到来的生日卡片 -->
+      <view wx:if="{{upcomingBirthday}}" class="upcoming-section">
+        <view class="section-title">
+          <text class="icon">🎉</text>
+          即将到来的寿星
+        </view>
+        
+        <view class="upcoming-card card" bindtap="viewDetail" data-index="0">
+          <view class="upcoming-content">
+            <view class="countdown-badge">
+              <view class="countdown-number">{{upcomingBirthday.daysLeft}}</view>
+              <view class="countdown-unit">天后</view>
+            </view>
+            
+            <view class="birthday-info">
+              <view class="name-section">
+                <view class="avatar">{{upcomingBirthday.name.substring(0,1)}}</view>
+                <view class="name-details">
+                  <view class="name">{{upcomingBirthday.name}}</view>
+                  <view class="tags">
+                    <text wx:for="{{upcomingBirthday.tags}}" wx:key="index" class="tag tag-mini">{{item}}</text>
+                  </view>
+                </view>
+              </view>
+              
+              <view class="birthday-details">
+                <view class="date-info">
+                  <text class="icon">📅</text>
+                  {{upcomingBirthday.month}}月{{upcomingBirthday.day}}日
+                  <text class="date-type">({{upcomingBirthday.type === 'lunar' ? '农历' : '公历'}})</text>
+                </view>
+                
+                <view class="meta-info">
+                  <view class="meta-item">
+                    <text class="icon">🎭</text>
+                    {{upcomingBirthday.constellation}}
+                  </view>
+                  <view class="meta-item">
+                    <text class="icon">🐲</text>
+                    {{upcomingBirthday.zodiac}}
+                  </view>
+                  <view class="meta-item">
+                    <text class="icon">🎈</text>
+                    {{upcomingBirthday.nextBirthdayAge}}岁
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 搜索和筛选 -->
+      <view class="tools-section">
+        <view class="search-box">
+          <text class="search-icon">🔍</text>
+          <input 
+            class="search-input" 
+            placeholder="搜索姓名、标签、星座..." 
+            bindinput="onSearch"
+            confirm-type="search"
+          />
+        </view>
+        
+        <view class="filter-tags">
+          <scroll-view scroll-x="true" class="tags-scroll">
+            <view class="tags-container">
+              <view 
+                class="tag {{currentTag === item ? 'active' : ''}}" 
+                wx:for="{{allTags}}" 
+                wx:key="index"
+                data-tag="{{item}}"
+                bindtap="switchTag"
+              >
+                {{item}}
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+
+      <!-- 生日列表 -->
+      <view class="list-section">
+        <view class="section-header">
+          <view class="section-title">
+            <text class="icon">📋</text>
+            生日列表
+            <text class="count-badge">{{filteredBirthdays.length}}</text>
+          </view>
+        </view>
+
+        <!-- 生日条目 -->
+        <view class="birthday-list">
+          <view 
+            class="birthday-item card" 
+            wx:for="{{filteredBirthdays}}" 
+            wx:key="index" 
+            bindtap="viewDetail" 
+            data-index="{{index}}"
+          >
+            <view class="item-content">
+              <view class="item-left">
+                <view class="avatar">{{item.name.substring(0,1)}}</view>
+                <view class="basic-info">
+                  <view class="name">{{item.name}}</view>
+                  <view class="birthday-date">
+                    {{item.month}}月{{item.day}}日
+                    <text class="age-info"> · {{item.currentAge}}岁</text>
+                  </view>
+                  <view class="tags-row">
+                    <text wx:for="{{item.tags}}" wx:for-item="tag" wx:key="tag" class="tag tag-mini">{{tag}}</text>
+                  </view>
+                </view>
+              </view>
+              
+              <view class="item-right">
+                <view class="days-left">
+                  <view class="days-number">{{item.daysLeft}}</view>
+                  <view class="days-text">天后</view>
+                </view>
+                <view class="zodiac-info">
+                  <text>{{item.constellation}}</text>
+                </view>
+              </view>
+            </view>
+            
+            <!-- 快捷操作 -->
+            <view class="item-actions">
+              <view class="action-btn" catchtap="viewDetail" data-index="{{index}}">
+                <text class="icon">👁️</text>
+                详细
+              </view>
+              <view class="action-btn delete" catchtap="deleteBirthday" data-id="{{item.id}}" data-name="{{item.name}}" data-index="{{index}}">
+                <text class="icon">🗑️</text>
+                删除
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 悬浮添加按钮 -->
+  <view wx:if="{{!isEmpty}}" class="fab" bindtap="addBirthday">
+    <view class="fab-content">
+      <text class="fab-icon">🎂</text>
+      <view class="fab-sparkles">
+        <text class="sparkle sparkle-1">✨</text>
+        <text class="sparkle sparkle-2">🎈</text>
+        <text class="sparkle sparkle-3">⭐</text>
+      </view>
+    </view>
+  </view>
+</view>
