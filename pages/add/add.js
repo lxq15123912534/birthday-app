@@ -36,26 +36,26 @@ Page({
     // 如果是编辑模式
     if (options.index !== undefined) {
       this.loadEditData(options.index)
-    }
-    
-    // 设置当前日期
-    var now = new Date()
-    var yearIndex = 0
-    for (var i = 0; i < this.data.years.length; i++) {
-      if (this.data.years[i] === now.getFullYear()) {
-        yearIndex = i
-        break
+    } else {
+      // 只有在新增模式下才设置当前日期
+      var now = new Date()
+      var yearIndex = 0
+      for (var i = 0; i < this.data.years.length; i++) {
+        if (this.data.years[i] === now.getFullYear()) {
+          yearIndex = i
+          break
+        }
       }
+      
+      this.setData({
+        year: now.getFullYear(),
+        month: now.getMonth() + 1,
+        day: now.getDate(),
+        yearIndex: yearIndex,
+        monthIndex: now.getMonth(),
+        dayIndex: now.getDate() - 1
+      })
     }
-    
-    this.setData({
-      year: now.getFullYear(),
-      month: now.getMonth() + 1,
-      day: now.getDate(),
-      yearIndex: yearIndex,
-      monthIndex: now.getMonth(),
-      dayIndex: now.getDate() - 1
-    })
   },
 
   initYears: function() {
@@ -72,6 +72,11 @@ Page({
   loadEditData: function(index) {
     var birthday = storage.getBirthday(index)
     if (birthday) {
+      // 确保years数组已经初始化
+      if (this.data.years.length === 0) {
+        this.initYears()
+      }
+      
       var yearIndex = 0
       for (var i = 0; i < this.data.years.length; i++) {
         if (this.data.years[i] === birthday.year) {
