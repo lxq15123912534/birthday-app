@@ -89,5 +89,9 @@ Page({
       title: '功能开发中',
       icon: 'none'
     })
+  },
+
+  goBack: function() {
+    wx.navigateBack()
   }
 })

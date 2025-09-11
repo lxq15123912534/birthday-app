@@ -220,17 +220,18 @@
 
     </view>
 
-    <!-- 底部操作按钮 -->
-    <view class="bottom-actions">
-      <view class="action-buttons">
-        <button class="btn btn-outline btn-large cancel-btn" bindtap="onCancel">
-          取消
-        </button>
-        <button class="btn btn-primary btn-large save-btn" bindtap="saveBirthday">
-          <text class="icon">💾</text>
-          {{isEdit ? '保存修改' : '保存'}}
-        </button>
-      </view>
-    </view>
   </view>
+</view>
+
+<!-- 底部悬浮操作按钮 -->
+<view class="bottom-actions">
+  <button class="action-btn cancel-btn" bindtap="onCancel">
+    <view class="btn-icon">❌</view>
+    <view class="btn-text">取消</view>
+  </button>
+  
+  <button class="action-btn save-btn" bindtap="saveBirthday">
+    <view class="btn-icon">💾</view>
+    <view class="btn-text">{{isEdit ? '保存修改' : '保存'}}</view>
+  </button>
 </view>

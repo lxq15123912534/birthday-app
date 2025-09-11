@@ -97,19 +97,25 @@
   </view>
 
 
-  <!-- 操作按钮 -->
-  <view class="action-buttons">
-    <button class="action-btn edit-btn" bindtap="editBirthday">
-      <view class="btn-icon">✏️</view>
-      <view class="btn-text">编辑</view>
-    </button>
-    
-    <button class="action-btn delete-btn" bindtap="deleteBirthday">
-      <view class="btn-icon">🗑️</view>
-      <view class="btn-text">删除</view>
-    </button>
   </view>
-  </view>
+</view>
+
+<!-- 底部悬浮操作按钮 -->
+<view class="bottom-actions" wx:if="{{birthday}}">
+  <button class="action-btn back-btn" bindtap="goBack">
+    <view class="btn-icon">↶</view>
+    <view class="btn-text">返回</view>
+  </button>
+  
+  <button class="action-btn delete-btn" bindtap="deleteBirthday">
+    <view class="btn-icon">🗑</view>
+    <view class="btn-text">删除</view>
+  </button>
+  
+  <button class="action-btn edit-btn" bindtap="editBirthday">
+    <view class="btn-icon">✏️</view>
+    <view class="btn-text">编辑</view>
+  </button>
 </view>
 
 <view class="empty-state" wx:else>
