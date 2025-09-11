@@ -2,6 +2,8 @@
  * 日期工具类 - 简化版本，兼容小程序
  */
 
+var lunar = require('./lunar.js')
+
 // 星座计算
 function getConstellation(month, day) {
   var constellations = [
@@ -30,11 +32,35 @@ function calculateDaysLeft(birthday) {
   var today = new Date()
   var currentYear = today.getFullYear()
   
-  var birthDate = new Date(currentYear, birthday.month - 1, birthday.day)
+  var birthDate
   
-  // 如果今年的生日已过，计算明年的
-  if (birthDate < today) {
-    birthDate = new Date(currentYear + 1, birthday.month - 1, birthday.day)
+  if (birthday.type === 'lunar') {
+    // 农历生日需要转换为当年的公历日期
+    var lunarToSolar = lunar.lunar2solar(currentYear, birthday.month, birthday.day, false)
+    if (!lunarToSolar) {
+      // 如果转换失败，使用简单估算
+      birthDate = new Date(currentYear, birthday.month - 1, birthday.day)
+    } else {
+      birthDate = new Date(lunarToSolar.cYear, lunarToSolar.cMonth - 1, lunarToSolar.cDay)
+    }
+    
+    // 如果今年的农历生日已过，计算明年的
+    if (birthDate < today) {
+      var nextYearLunarToSolar = lunar.lunar2solar(currentYear + 1, birthday.month, birthday.day, false)
+      if (nextYearLunarToSolar) {
+        birthDate = new Date(nextYearLunarToSolar.cYear, nextYearLunarToSolar.cMonth - 1, nextYearLunarToSolar.cDay)
+      } else {
+        birthDate = new Date(currentYear + 1, birthday.month - 1, birthday.day)
+      }
+    }
+  } else {
+    // 公历生日
+    birthDate = new Date(currentYear, birthday.month - 1, birthday.day)
+    
+    // 如果今年的生日已过，计算明年的
+    if (birthDate < today) {
+      birthDate = new Date(currentYear + 1, birthday.month - 1, birthday.day)
+    }
   }
   
   var timeDiff = birthDate.getTime() - today.getTime()
@@ -75,24 +101,47 @@ function calculateBirthdayInfo(birthday) {
     year: birthday.year,
     month: birthday.month,
     day: birthday.day,
-    tags: birthday.tags || [],
-    constellation: getConstellation(birthday.month, birthday.day),
-    zodiac: getZodiac(birthday.year),
-    currentAge: calculateAge(birthday.year),
-    blessing: getBirthdayBlessing()
+    tags: birthday.tags || []
   }
   
-  // 计算距离生日天数
-  info.daysLeft = calculateDaysLeft(birthday)
-  
-  // 计算今年和明年生日信息
+  // 根据生日类型处理星座、生肖等信息
   if (birthday.type === 'lunar') {
-    info.solarDate = birthday.year + '年' + birthday.month + '月' + birthday.day + '日'
-    info.lunarInfo = '农历' + birthday.year + '年' + birthday.month + '月' + birthday.day + '日'
+    // 农历生日，需要转换为公历来计算星座
+    var lunarToSolar = lunar.lunar2solar(birthday.year, birthday.month, birthday.day, false)
+    if (lunarToSolar) {
+      info.constellation = lunarToSolar.astro
+      info.solarDate = lunarToSolar.cYear + '年' + lunarToSolar.cMonth + '月' + lunarToSolar.cDay + '日'
+      info.lunarInfo = '农历' + lunarToSolar.lYear + '年' + lunarToSolar.IMonthCn + lunarToSolar.IDayCn
+      info.gzYear = lunarToSolar.gzYear
+      info.zodiac = lunarToSolar.Animal
+    } else {
+      // 转换失败时的备选方案
+      info.constellation = getConstellation(birthday.month, birthday.day)
+      info.solarDate = '转换失败'
+      info.lunarInfo = '农历' + birthday.year + '年' + birthday.month + '月' + birthday.day + '日'
+      info.zodiac = getZodiac(birthday.year)
+    }
   } else {
-    info.solarDate = birthday.year + '年' + birthday.month + '月' + birthday.day + '日'
-    info.lunarInfo = '公历' + birthday.year + '年' + birthday.month + '月' + birthday.day + '日'
+    // 公历生日，可以转换为农历显示更多信息
+    var solarToLunar = lunar.solar2lunar(birthday.year, birthday.month, birthday.day)
+    if (solarToLunar) {
+      info.constellation = solarToLunar.astro
+      info.solarDate = birthday.year + '年' + birthday.month + '月' + birthday.day + '日'
+      info.lunarInfo = '农历' + solarToLunar.lYear + '年' + solarToLunar.IMonthCn + solarToLunar.IDayCn
+      info.gzYear = solarToLunar.gzYear
+      info.zodiac = solarToLunar.Animal
+    } else {
+      info.constellation = getConstellation(birthday.month, birthday.day)
+      info.solarDate = birthday.year + '年' + birthday.month + '月' + birthday.day + '日'
+      info.lunarInfo = '转换失败'
+      info.zodiac = getZodiac(birthday.year)
+    }
   }
+  
+  // 计算年龄和距离生日天数
+  info.currentAge = calculateAge(birthday.year)
+  info.daysLeft = calculateDaysLeft(birthday)
+  info.blessing = getBirthdayBlessing()
   
   // 下次生日信息
   info.nextBirthdayAge = info.currentAge + 1
