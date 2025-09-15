@@ -213,7 +213,7 @@ Page({
     })
   },
 
-  onCancel: function() {
+  onBack: function() {
     wx.navigateBack()
   },
 

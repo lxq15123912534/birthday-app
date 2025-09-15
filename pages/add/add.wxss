@@ -1,9 +1,14 @@
 /* pages/add/add.wxss */
 
-/* 顶部标题区域 - 现代简约设计 */
+/* 顶部标题区域 - 多彩渐变设计 */
 .header-section {
   padding: 100rpx 40rpx 80rpx;
-  background: linear-gradient(145deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(145deg,
+    #ff6ba6 0%,
+    #fdba74 25%,
+    #9ae6b4 50%,
+    #63b3ed 75%,
+    #d946ef 100%);
   position: relative;
   overflow: hidden;
 }
@@ -85,21 +90,32 @@
 
 .form-card {
   margin-bottom: 20rpx;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(20rpx);
-  -webkit-backdrop-filter: blur(20rpx);
-  border: 1rpx solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg,
+    rgba(255, 106, 166, 0.08) 0%,
+    rgba(253, 186, 116, 0.06) 25%,
+    rgba(154, 230, 180, 0.05) 50%,
+    rgba(99, 179, 237, 0.06) 75%,
+    rgba(217, 70, 239, 0.08) 100%);
+  backdrop-filter: blur(25rpx);
+  -webkit-backdrop-filter: blur(25rpx);
+  border: 1rpx solid rgba(255, 255, 255, 0.6);
   border-radius: 20rpx;
-  box-shadow: 
-    0 4rpx 20rpx rgba(0, 0, 0, 0.06),
-    0 1rpx 0 rgba(255, 255, 255, 0.5) inset;
+  box-shadow:
+    0 8rpx 28rpx rgba(255, 106, 166, 0.08),
+    0 4rpx 14rpx rgba(253, 186, 116, 0.06),
+    0 2rpx 0 rgba(255, 255, 255, 0.8) inset;
   overflow: hidden;
   transition: all 0.3s ease;
 }
 
 .form-card:active {
   transform: translateY(1rpx);
-  background: rgba(255, 255, 255, 0.8);
+  background: linear-gradient(135deg,
+    rgba(255, 106, 166, 0.12) 0%,
+    rgba(253, 186, 116, 0.1) 25%,
+    rgba(154, 230, 180, 0.08) 50%,
+    rgba(99, 179, 237, 0.1) 75%,
+    rgba(217, 70, 239, 0.12) 100%);
 }
 
 .form-card .card-title {
@@ -134,10 +150,13 @@
 
 .form-input {
   width: 100%;
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(10rpx);
-  -webkit-backdrop-filter: blur(10rpx);
-  border: 1rpx solid rgba(255, 255, 255, 0.3);
+  background: linear-gradient(135deg,
+    rgba(255, 106, 166, 0.05) 0%,
+    rgba(253, 186, 116, 0.04) 50%,
+    rgba(99, 179, 237, 0.05) 100%);
+  backdrop-filter: blur(15rpx);
+  -webkit-backdrop-filter: blur(15rpx);
+  border: 1rpx solid rgba(255, 255, 255, 0.5);
   border-radius: 16rpx;
   padding: 24rpx 20rpx;
   font-size: 26rpx;
@@ -150,11 +169,15 @@
 }
 
 .form-input:focus {
-  background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(102, 126, 234, 0.3);
-  box-shadow: 
-    0 4rpx 16rpx rgba(102, 126, 234, 0.1),
-    0 1rpx 0 rgba(255, 255, 255, 0.5) inset;
+  background: linear-gradient(135deg,
+    rgba(255, 106, 166, 0.1) 0%,
+    rgba(253, 186, 116, 0.08) 50%,
+    rgba(99, 179, 237, 0.1) 100%);
+  border-color: rgba(255, 106, 166, 0.4);
+  box-shadow:
+    0 6rpx 20rpx rgba(255, 106, 166, 0.12),
+    0 3rpx 10rpx rgba(253, 186, 116, 0.08),
+    0 2rpx 0 rgba(255, 255, 255, 0.8) inset;
   outline: none;
 }
 
@@ -189,10 +212,13 @@
 }
 
 .type-option.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg,
+    #ff6ba6 0%,
+    #fdba74 50%,
+    #63b3ed 100%);
   color: white;
-  border-color: rgba(102, 126, 234, 0.5);
-  box-shadow: 0 4rpx 16rpx rgba(102, 126, 234, 0.3);
+  border-color: rgba(255, 106, 166, 0.5);
+  box-shadow: 0 6rpx 20rpx rgba(255, 106, 166, 0.3);
 }
 
 .type-icon {
@@ -336,16 +362,22 @@
 }
 
 .tag.active {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg,
+    #ff6ba6 0%,
+    #fdba74 50%,
+    #63b3ed 100%);
   color: white;
-  border-color: rgba(102, 126, 234, 0.5);
-  box-shadow: 0 2rpx 8rpx rgba(102, 126, 234, 0.3);
+  border-color: rgba(255, 106, 166, 0.5);
+  box-shadow: 0 4rpx 12rpx rgba(255, 106, 166, 0.3);
 }
 
 .selected-tag {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg,
+    #ff6ba6 0%,
+    #fdba74 50%,
+    #63b3ed 100%);
   color: white;
-  box-shadow: 0 2rpx 8rpx rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4rpx 12rpx rgba(255, 106, 166, 0.3);
 }
 
 .remove-icon {
@@ -479,33 +511,36 @@
 }
 
 .btn-icon {
-  font-size: 32rpx;
-  margin-right: 12rpx;
+  font-size: 28rpx;
+  margin-right: 8rpx;
   color: white;
 }
 
 .btn-text {
-  font-size: 32rpx;
+  font-size: 28rpx;
   font-weight: 600;
   color: white;
 }
 
-.cancel-btn {
+.back-btn {
   background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
   box-shadow: 0 6rpx 20rpx rgba(149, 165, 166, 0.3);
 }
 
-.cancel-btn:active {
+.back-btn:active {
   box-shadow: 0 3rpx 12rpx rgba(149, 165, 166, 0.4);
 }
 
 .save-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  box-shadow: 0 6rpx 20rpx rgba(102, 126, 234, 0.3);
+  background: linear-gradient(135deg,
+    #ff6ba6 0%,
+    #fdba74 50%,
+    #63b3ed 100%);
+  box-shadow: 0 8rpx 24rpx rgba(255, 106, 166, 0.3);
 }
 
 .save-btn:active {
-  box-shadow: 0 3rpx 12rpx rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6rpx 18rpx rgba(255, 106, 166, 0.4);
 }
 
 /* 动画效果 */

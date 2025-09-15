@@ -1,8 +1,13 @@
 /* pages/profile/profile.wxss */
 
-/* 个人信息头部 - 现代简约设计 */
+/* 个人信息头部 - 多彩渐变设计 */
 .profile-header {
-  background: linear-gradient(145deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(145deg,
+    #ff6ba6 0%,
+    #fdba74 25%,
+    #9ae6b4 50%,
+    #63b3ed 75%,
+    #d946ef 100%);
   padding: 100rpx 40rpx 80rpx;
   position: relative;
   overflow: hidden;
