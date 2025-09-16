@@ -49,8 +49,23 @@ Page({
   },
 
   onLoad() {
+    // 设置自定义tabBar的选中状态
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 1
+      })
+    }
     this.loadUserInfo();
     this.loadTheme();
+  },
+
+  onShow() {
+    // 设置自定义tabBar的选中状态
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 1
+      })
+    }
   },
 
   // 加载用户信息

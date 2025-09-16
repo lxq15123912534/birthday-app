@@ -12,11 +12,24 @@ Page({
   },
 
   onLoad() {
+    // 设置自定义tabBar的选中状态
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
+      })
+    }
     this.loadBirthdays()
   },
 
   onShow() {
     console.log('首页 onShow 调用')
+    // 设置自定义tabBar的选中状态
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        selected: 0
+      })
+    }
+
     var that = this
     // 稍微延迟一下，确保从其他页面返回时数据已经完全保存
     setTimeout(function() {

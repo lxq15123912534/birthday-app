@@ -3,7 +3,7 @@
 
 /* 主要内容区域 */
 .main-content {
-  padding: 0 24rpx 120rpx;
+  padding: 0 24rpx 160rpx;
   position: relative;
   z-index: 10;
   animation: fadeInUp 0.6s ease-out;
