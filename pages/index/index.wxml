@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view class="container">
+<view class="container {{currentTheme ? currentTheme.key + '-theme' : 'classic-theme'}}">
 
   <!-- 内容区域 -->
   <view class="content-wrapper slide-up" style="padding-top: 40rpx;">

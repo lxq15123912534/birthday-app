@@ -1,5 +1,5 @@
 <!--pages/add/add.wxml-->
-<view class="container">
+<view class="container {{currentTheme && currentTheme.key ? currentTheme.key + '-theme' : 'classic-theme'}}">
   <!-- 顶部标题区域 -->
   <view class="header-section">
     <view class="header-content">

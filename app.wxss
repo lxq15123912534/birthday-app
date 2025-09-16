@@ -47,12 +47,120 @@ page {
   min-height: 100vh;
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
   padding: 0;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .content-wrapper {
   min-height: 100vh;
   background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
   position: relative;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 全局主题样式 - 增强版 */
+
+/* 经典主题 - 彩虹渐变 */
+.classic-theme .container,
+.classic-theme .content-wrapper {
+  background: linear-gradient(135deg, #fef7f7 0%, #fef3c7 25%, #ecfdf5 50%, #eff6ff 75%, #faf5ff 100%);
+}
+
+.classic-theme .card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1rpx solid rgba(255, 107, 166, 0.2);
+  box-shadow: 0 4rpx 20rpx rgba(255, 107, 166, 0.1);
+}
+
+.classic-theme .btn-primary {
+  background: linear-gradient(135deg, #ff6ba6 0%, #fdba74 50%, #9ae6b4 100%);
+}
+
+.classic-theme .empty-icon {
+  background: linear-gradient(135deg, #ff6ba6 0%, #fdba74 25%, #9ae6b4 50%, #63b3ed 75%, #d946ef 100%);
+}
+
+/* 海洋主题 - 深蓝系 */
+.ocean-theme .container,
+.ocean-theme .content-wrapper {
+  background: linear-gradient(135deg, #f0f9ff 0%, #dbeafe 50%, #bfdbfe 100%);
+}
+
+.ocean-theme .card {
+  background: rgba(165, 243, 252, 0.6);
+  border: 1rpx solid rgba(8, 145, 178, 0.3);
+  box-shadow: 0 4rpx 20rpx rgba(8, 145, 178, 0.15);
+}
+
+.ocean-theme .btn-primary {
+  background: linear-gradient(135deg, #0891b2 0%, #0ea5e9 50%, #3b82f6 100%);
+}
+
+.ocean-theme .empty-icon {
+  background: linear-gradient(135deg, #0891b2 0%, #0ea5e9 25%, #3b82f6 50%, #6366f1 75%, #8b5cf6 100%);
+}
+
+.ocean-theme .tag.active {
+  background: linear-gradient(135deg, #0891b2 0%, #3b82f6 100%);
+}
+
+.ocean-theme .gesture-hand {
+  background: linear-gradient(135deg, #0891b2 0%, #0ea5e9 25%, #3b82f6 50%, #6366f1 75%, #8b5cf6 100%);
+}
+
+/* 森林主题 - 绿色系 */
+.forest-theme .container,
+.forest-theme .content-wrapper {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+}
+
+.forest-theme .card {
+  background: rgba(187, 247, 208, 0.7);
+  border: 1rpx solid rgba(5, 150, 105, 0.3);
+  box-shadow: 0 4rpx 20rpx rgba(5, 150, 105, 0.15);
+}
+
+.forest-theme .btn-primary {
+  background: linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%);
+}
+
+.forest-theme .empty-icon {
+  background: linear-gradient(135deg, #059669 0%, #10b981 25%, #34d399 50%, #6ee7b7 75%, #a7f3d0 100%);
+}
+
+.forest-theme .tag.active {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+}
+
+.forest-theme .gesture-hand {
+  background: linear-gradient(135deg, #059669 0%, #10b981 25%, #34d399 50%, #6ee7b7 75%, #a7f3d0 100%);
+}
+
+/* 晚霞主题 - 紫粉系 */
+.sunset-theme .container,
+.sunset-theme .content-wrapper {
+  background: linear-gradient(135deg, #fdf4ff 0%, #fae8ff 50%, #f3e8ff 100%);
+}
+
+.sunset-theme .card {
+  background: rgba(243, 232, 255, 0.7);
+  border: 1rpx solid rgba(192, 132, 252, 0.3);
+  box-shadow: 0 4rpx 20rpx rgba(192, 132, 252, 0.15);
+}
+
+.sunset-theme .btn-primary {
+  background: linear-gradient(135deg, #c084fc 0%, #e879f9 50%, #f472b6 100%);
+}
+
+.sunset-theme .empty-icon {
+  background: linear-gradient(135deg, #c084fc 0%, #e879f9 25%, #f472b6 50%, #fb7185 75%, #fbbf24 100%);
+}
+
+.sunset-theme .tag.active {
+  background: linear-gradient(135deg, #c084fc 0%, #e879f9 100%);
+}
+
+.sunset-theme .gesture-hand {
+  background: linear-gradient(135deg, #c084fc 0%, #e879f9 25%, #f472b6 50%, #fb7185 75%, #fbbf24 100%);
 }
 
 /* 卡片系统 - 玻璃拟态设计 */
@@ -261,6 +369,19 @@ page {
   font-weight: 500;
   font-size: 26rpx;
   border: 1rpx solid rgba(255, 255, 255, 0.5);
+}
+
+/* 主题特定头像样式 */
+.ocean-theme .avatar {
+  background: linear-gradient(135deg, #0891b2 0%, #3b82f6 100%);
+}
+
+.forest-theme .avatar {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+}
+
+.sunset-theme .avatar {
+  background: linear-gradient(135deg, #c084fc 0%, #e879f9 100%);
 }
 
 .icon {

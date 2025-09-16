@@ -3,10 +3,12 @@ var storage = require('../../utils/storage.js')
 Page({
   data: {
     birthday: null,
-    index: -1
+    index: -1,
+    currentTheme: null
   },
 
   onLoad: function(options) {
+    this.loadTheme();
     if (options.index !== undefined) {
       var index = parseInt(options.index)
       this.loadBirthdayDetail(index)
@@ -14,9 +16,22 @@ Page({
   },
 
   onShow: function() {
+    this.loadTheme();
     // 重新加载数据，以防从编辑页面返回时数据有更新
     if (this.data.index >= 0) {
       this.loadBirthdayDetail(this.data.index)
+    }
+  },
+
+  // 加载主题
+  loadTheme: function() {
+    try {
+      const globalData = getApp().globalData;
+      if (globalData.currentTheme) {
+        this.setData({ currentTheme: globalData.currentTheme });
+      }
+    } catch (error) {
+      console.error('加载主题失败:', error);
     }
   },
 

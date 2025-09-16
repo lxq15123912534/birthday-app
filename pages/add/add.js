@@ -27,10 +27,14 @@ Page({
     
     // 编辑模式
     isEdit: false,
-    editIndex: -1
+    editIndex: -1,
+
+    // 主题支持
+    currentTheme: null
   },
 
   onLoad: function(options) {
+    this.loadTheme();
     this.initYears()
     
     // 如果是编辑模式
@@ -55,6 +59,22 @@ Page({
         monthIndex: now.getMonth(),
         dayIndex: now.getDate() - 1
       })
+    }
+  },
+
+  onShow: function() {
+    this.loadTheme();
+  },
+
+  // 加载主题
+  loadTheme: function() {
+    try {
+      const globalData = getApp().globalData;
+      if (globalData.currentTheme) {
+        this.setData({ currentTheme: globalData.currentTheme });
+      }
+    } catch (error) {
+      console.error('加载主题失败:', error);
     }
   },
 

@@ -1,6 +1,6 @@
 /* pages/add/add.wxss */
 
-/* 顶部标题区域 - 多彩渐变设计 */
+/* 顶部标题区域 - 支持主题切换 */
 .header-section {
   padding: 100rpx 40rpx 80rpx;
   background: linear-gradient(145deg,
@@ -11,6 +11,38 @@
     #d946ef 100%);
   position: relative;
   overflow: hidden;
+  transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 主题特定样式 */
+/* 海洋主题 */
+.ocean-theme .header-section {
+  background: linear-gradient(145deg,
+    #0891b2 0%,
+    #0ea5e9 25%,
+    #3b82f6 50%,
+    #6366f1 75%,
+    #8b5cf6 100%);
+}
+
+/* 森林主题 */
+.forest-theme .header-section {
+  background: linear-gradient(145deg,
+    #059669 0%,
+    #10b981 25%,
+    #34d399 50%,
+    #6ee7b7 75%,
+    #a7f3d0 100%);
+}
+
+/* 晚霞主题 */
+.sunset-theme .header-section {
+  background: linear-gradient(145deg,
+    #c084fc 0%,
+    #e879f9 25%,
+    #f472b6 50%,
+    #fb7185 75%,
+    #fbbf24 100%);
 }
 
 .header-section::before {

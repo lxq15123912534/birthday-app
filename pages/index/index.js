@@ -8,7 +8,8 @@ Page({
     filteredBirthdays: [],
     currentTag: '全部',
     allTags: ['全部'],
-    upcomingBirthday: null
+    upcomingBirthday: null,
+    currentTheme: null
   },
 
   onLoad() {
@@ -18,6 +19,7 @@ Page({
         selected: 0
       })
     }
+    this.loadTheme();
     this.loadBirthdays()
   },
 
@@ -30,11 +32,24 @@ Page({
       })
     }
 
+    this.loadTheme();
     var that = this
     // 稍微延迟一下，确保从其他页面返回时数据已经完全保存
     setTimeout(function() {
       that.loadBirthdays()
     }, 50)
+  },
+
+  // 加载主题
+  loadTheme() {
+    try {
+      const globalData = getApp().globalData;
+      if (globalData.currentTheme) {
+        this.setData({ currentTheme: globalData.currentTheme });
+      }
+    } catch (error) {
+      console.error('加载主题失败:', error);
+    }
   },
 
   loadBirthdays: function() {

@@ -1,16 +1,17 @@
 /* pages/profile/profile.wxss */
 
-/* 个人信息头部 - 多彩渐变设计 */
+/* 个人信息头部 - 支持主题动态切换 */
 .profile-header {
-  background: linear-gradient(145deg,
+  background: var(--theme-header-bg, linear-gradient(145deg,
     #ff6ba6 0%,
     #fdba74 25%,
     #9ae6b4 50%,
     #63b3ed 75%,
-    #d946ef 100%);
+    #d946ef 100%));
   padding: 100rpx 40rpx 80rpx;
   position: relative;
   overflow: hidden;
+  transition: background 0.5s ease;
 }
 
 .profile-header::before {
@@ -147,12 +148,13 @@
 /* 设置区域 */
 .content-wrapper {
   padding: 24rpx 24rpx 160rpx;
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+  background: var(--theme-content-bg, linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%));
   margin-top: -40rpx;
   position: relative;
   z-index: 10;
   border-radius: 24rpx 24rpx 0 0;
   min-height: calc(100vh - 300rpx);
+  transition: background 0.5s ease;
 }
 
 .settings-section {
@@ -410,29 +412,195 @@
   font-weight: bold;
 }
 
+/* 主题特定样式 */
+
+/* 经典主题 */
+.classic-theme .profile-header {
+  background: linear-gradient(145deg,
+    #ff6ba6 0%,
+    #fdba74 25%,
+    #9ae6b4 50%,
+    #63b3ed 75%,
+    #d946ef 100%);
+}
+
+.classic-theme .content-wrapper {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+}
+
+/* 海洋主题 - 增强版 */
+.ocean-theme .profile-header {
+  background: linear-gradient(145deg,
+    #0891b2 0%,
+    #0ea5e9 25%,
+    #3b82f6 50%,
+    #6366f1 75%,
+    #8b5cf6 100%);
+}
+
+.ocean-theme .content-wrapper {
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 50%, #7dd3fc 100%);
+}
+
+.ocean-theme .setting-item {
+  background: rgba(165, 243, 252, 0.8);
+  border: 1rpx solid rgba(8, 145, 178, 0.4);
+  box-shadow: 0 2rpx 8rpx rgba(8, 145, 178, 0.1);
+}
+
+.ocean-theme .setting-item:active {
+  background: rgba(125, 211, 252, 0.9);
+  border-color: rgba(8, 145, 178, 0.6);
+}
+
+.ocean-theme .avatar-edit-icon {
+  color: #0891b2;
+  background: rgba(165, 243, 252, 0.9);
+}
+
+.ocean-theme .modal-btn.confirm {
+  color: #0891b2;
+  font-weight: 700;
+}
+
+.ocean-theme .theme-item.selected {
+  border-color: #0891b2;
+  background: rgba(8, 145, 178, 0.15);
+  box-shadow: 0 4rpx 12rpx rgba(8, 145, 178, 0.2);
+}
+
+.ocean-theme .theme-check {
+  color: #0891b2;
+  font-weight: 800;
+}
+
+/* 森林主题 - 增强版 */
+.forest-theme .profile-header {
+  background: linear-gradient(145deg,
+    #059669 0%,
+    #10b981 25%,
+    #34d399 50%,
+    #6ee7b7 75%,
+    #a7f3d0 100%);
+}
+
+.forest-theme .content-wrapper {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 50%, #86efac 100%);
+}
+
+.forest-theme .setting-item {
+  background: rgba(134, 239, 172, 0.8);
+  border: 1rpx solid rgba(5, 150, 105, 0.4);
+  box-shadow: 0 2rpx 8rpx rgba(5, 150, 105, 0.1);
+}
+
+.forest-theme .setting-item:active {
+  background: rgba(110, 231, 183, 0.9);
+  border-color: rgba(5, 150, 105, 0.6);
+}
+
+.forest-theme .avatar-edit-icon {
+  color: #059669;
+  background: rgba(134, 239, 172, 0.9);
+}
+
+.forest-theme .modal-btn.confirm {
+  color: #059669;
+  font-weight: 700;
+}
+
+.forest-theme .theme-item.selected {
+  border-color: #059669;
+  background: rgba(5, 150, 105, 0.15);
+  box-shadow: 0 4rpx 12rpx rgba(5, 150, 105, 0.2);
+}
+
+.forest-theme .theme-check {
+  color: #059669;
+  font-weight: 800;
+}
+
+/* 晚霞主题 - 增强版 */
+.sunset-theme .profile-header {
+  background: linear-gradient(145deg,
+    #c084fc 0%,
+    #e879f9 25%,
+    #f472b6 50%,
+    #fb7185 75%,
+    #fbbf24 100%);
+}
+
+.sunset-theme .content-wrapper {
+  background: linear-gradient(135deg, #fae8ff 0%, #f3e8ff 50%, #e879f9 100%);
+}
+
+.sunset-theme .setting-item {
+  background: rgba(232, 121, 249, 0.3);
+  border: 1rpx solid rgba(192, 132, 252, 0.5);
+  box-shadow: 0 2rpx 8rpx rgba(192, 132, 252, 0.15);
+}
+
+.sunset-theme .setting-item:active {
+  background: rgba(244, 114, 182, 0.4);
+  border-color: rgba(192, 132, 252, 0.7);
+}
+
+.sunset-theme .avatar-edit-icon {
+  color: #c084fc;
+  background: rgba(232, 121, 249, 0.4);
+}
+
+.sunset-theme .modal-btn.confirm {
+  color: #c084fc;
+  font-weight: 700;
+}
+
+.sunset-theme .theme-item.selected {
+  border-color: #c084fc;
+  background: rgba(192, 132, 252, 0.2);
+  box-shadow: 0 4rpx 12rpx rgba(192, 132, 252, 0.25);
+}
+
+.sunset-theme .theme-check {
+  color: #c084fc;
+  font-weight: 800;
+}
+
+/* 主题切换动画 */
+.container {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-header,
+.content-wrapper,
+.setting-item {
+  transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 /* 响应式优化 */
 @media screen and (max-width: 320px) {
   .profile-header {
     padding: 60rpx 30rpx 40rpx;
   }
-  
+
   .profile-card {
     padding: 30rpx;
   }
-  
+
   .avatar-wrapper {
     width: 100rpx;
     height: 100rpx;
   }
-  
+
   .avatar-emoji {
     font-size: 50rpx;
   }
-  
+
   .nickname {
     font-size: 32rpx;
   }
-  
+
   .content-wrapper {
     padding: 20rpx;
   }

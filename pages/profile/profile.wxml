@@ -1,5 +1,5 @@
 <!--pages/profile/profile.wxml-->
-<view class="container">
+<view class="container {{currentTheme && currentTheme.key ? currentTheme.key + '-theme' : 'classic-theme'}}">
   <!-- 顶部个人信息区域 -->
   <view class="profile-header">
     <view class="profile-card">

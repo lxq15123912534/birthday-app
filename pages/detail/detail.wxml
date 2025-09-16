@@ -1,5 +1,5 @@
 <!--pages/detail/detail.wxml-->
-<view class="container" wx:if="{{birthday}}">
+<view class="container {{currentTheme && currentTheme.key ? currentTheme.key + '-theme' : 'classic-theme'}}" wx:if="{{birthday}}">
   <!-- 顶部区域 -->
   <view class="header-section">
     <view class="header-card">
