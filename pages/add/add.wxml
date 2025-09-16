@@ -223,17 +223,19 @@
   </view>
 </view>
 
-<!-- 底部悬浮操作按钮 -->
-<view class="bottom-actions">
-  <view class="bottom-actions-inner">
-    <button class="action-btn back-btn" bindtap="onBack">
-      <view class="btn-icon">↶</view>
-      <view class="btn-text">返回</view>
+<!-- 底部温馨操作按钮 -->
+<view class="birthday-actions">
+  <view class="birthday-actions-inner">
+    <button class="birthday-btn return-btn" bindtap="onBack">
+      <view class="btn-emoji">🏠</view>
+      <view class="btn-label">返回</view>
+<!--      <view class="btn-subtitle">返回生日列表</view>-->
     </button>
 
-    <button class="action-btn save-btn" bindtap="saveBirthday">
-      <view class="btn-icon">💾</view>
-      <view class="btn-text">{{isEdit ? '保存修改' : '保存'}}</view>
+    <button class="birthday-btn treasure-btn" bindtap="saveBirthday">
+      <view class="btn-emoji">{{isEdit ? '💖' : '🎁'}}</view>
+      <view class="btn-label">{{isEdit ? '确认修改' : '确认添加'}}</view>
+<!--      <view class="btn-subtitle">{{isEdit ? '更新珍贵回忆' : '保存美好时光'}}</view>-->
     </button>
   </view>
 </view>

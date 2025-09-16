@@ -100,22 +100,25 @@
   </view>
 </view>
 
-<!-- 底部悬浮操作按钮 -->
-<view class="bottom-actions" wx:if="{{birthday}}">
-  <view class="bottom-actions-inner">
-    <button class="action-btn back-btn" bindtap="goBack">
-      <view class="btn-icon">↶</view>
-      <view class="btn-text">返回</view>
+<!-- 底部温馨操作按钮 -->
+<view class="birthday-actions" wx:if="{{birthday}}">
+  <view class="birthday-actions-inner">
+    <button class="birthday-btn home-btn" bindtap="goBack">
+      <view class="btn-emoji">🏠</view>
+      <view class="btn-label">返回</view>
+<!--      <view class="btn-subtitle">返回生日列表</view>-->
     </button>
 
-    <button class="action-btn delete-btn" bindtap="deleteBirthday">
-      <view class="btn-icon">🗑</view>
-      <view class="btn-text">删除</view>
+    <button class="birthday-btn care-btn" bindtap="editBirthday">
+      <view class="btn-emoji">💝</view>
+      <view class="btn-label">编辑信息</view>
+<!--      <view class="btn-subtitle">更新生日信息</view>-->
     </button>
 
-    <button class="action-btn edit-btn" bindtap="editBirthday">
-      <view class="btn-icon">✏️</view>
-      <view class="btn-text">编辑</view>
+    <button class="birthday-btn farewell-btn" bindtap="deleteBirthday">
+      <view class="btn-emoji">👋</view>
+      <view class="btn-label">删除记录</view>
+<!--      <view class="btn-subtitle">删除此生日</view>-->
     </button>
   </view>
 </view>
